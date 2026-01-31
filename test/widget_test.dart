@@ -22,5 +22,10 @@ void main() {
     // Advance time by 3 seconds to trigger navigation
     await tester.pump(const Duration(seconds: 3));
     await tester.pumpAndSettle();
+
+    // Verify that Login screen is shown.
+    expect(find.text('Log in for the best experience'), findsOneWidget);
+    expect(find.text('Mobile Number'), findsOneWidget);
+    expect(find.text('CONTINUE'), findsOneWidget);
   });
 }
