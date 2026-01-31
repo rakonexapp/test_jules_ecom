@@ -20,9 +20,7 @@ class LoginScreen extends StatelessWidget {
                       // Header Area
                       _buildHeader(context),
                       // Bottom Sheet Area
-                      Expanded(
-                        child: _buildBottomSheet(context),
-                      ),
+                      Expanded(child: _buildBottomSheet(context)),
                     ],
                   ),
                 ),
@@ -42,42 +40,56 @@ class LoginScreen extends StatelessWidget {
         gradient: RadialGradient(
           center: Alignment.topRight,
           radius: 1.5,
-          colors: [
-            Color(0xFF8A4BFF),
-            Color(0xFF7528F0),
-          ],
+          colors: [Color(0xFF8A4BFF), Color(0xFF7528F0)],
         ),
       ),
-      padding: EdgeInsets.fromLTRB(24, MediaQuery.of(context).padding.top + 16, 24, 16),
+      padding: EdgeInsets.fromLTRB(
+        24,
+        MediaQuery.of(context).padding.top + 16,
+        24,
+        16,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.close, color: Colors.white, size: 28),
-                padding: EdgeInsets.zero,
-                constraints: const BoxConstraints(),
-              ),
-              TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.white.withOpacity(0.2),
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  minimumSize: Size.zero,
-                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+              Semantics(
+                label: 'Close login screen',
+                button: true,
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.close, color: Colors.white, size: 28),
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
                 ),
-                child: const Text(
-                  'Skip',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
+              ),
+              Semantics(
+                label: 'Skip login',
+                hint: 'Continue without logging in',
+                button: true,
+                child: TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white.withOpacity(0.2),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 4,
+                    ),
+                    minimumSize: Size.zero,
+                    tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: const Text(
+                    'Skip',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
               ),
@@ -157,10 +169,7 @@ class LoginScreen extends StatelessWidget {
           const SizedBox(height: 4),
           const Text(
             'Enter your phone number to continue',
-            style: TextStyle(
-              color: Color(0xFF716189),
-              fontSize: 14,
-            ),
+            style: TextStyle(color: Color(0xFF716189), fontSize: 14),
           ),
           const SizedBox(height: 32),
           const Text(
@@ -194,24 +203,29 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(width: 8),
               Expanded(
-                child: Container(
-                  height: 56,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: const Color(0xFFDFDBE6)),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const TextField(
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      hintText: '00000 00000',
-                      hintStyle: TextStyle(color: Color(0xFF716189)),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 16),
-                      border: InputBorder.none,
-                      suffixIcon: Icon(Icons.smartphone, color: Color(0xFF716189)),
+                child: Semantics(
+                  label: 'Mobile number input',
+                  hint: 'Enter your 10-digit mobile number',
+                  textField: true,
+                  child: Container(
+                    height: 56,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: const Color(0xFFDFDBE6)),
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color(0xFF141118),
+                    child: const TextField(
+                      keyboardType: TextInputType.phone,
+                      decoration: InputDecoration(
+                        hintText: '00000 00000',
+                        hintStyle: TextStyle(color: Color(0xFF716189)),
+                        contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                        border: InputBorder.none,
+                        suffixIcon: Icon(
+                          Icons.smartphone,
+                          color: Color(0xFF716189),
+                        ),
+                      ),
+                      style: TextStyle(fontSize: 16, color: Color(0xFF141118)),
                     ),
                   ),
                 ),
