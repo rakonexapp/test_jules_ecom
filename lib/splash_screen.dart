@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
-import 'main.dart'; // Import to navigate to MyHomePage
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -11,7 +10,8 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with TickerProviderStateMixin {
   late AnimationController _logoController;
   late AnimationController _dotsController;
 
@@ -204,10 +204,7 @@ class _BlurredCircle extends StatelessWidget {
     return Container(
       width: size,
       height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: color,
-      ),
+      decoration: BoxDecoration(shape: BoxShape.circle, color: color),
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 40, sigmaY: 40),
         child: Container(color: Colors.transparent),
@@ -235,7 +232,9 @@ class _BouncingDot extends StatelessWidget {
         double curveValue = (controller.value * 1.5); // Speed it up a bit
         if (curveValue > start && curveValue < end) {
           double localValue = (curveValue - start) / 0.6;
-          value = Curves.easeInOut.transform(localValue < 0.5 ? localValue * 2 : (1 - localValue) * 2);
+          value = Curves.easeInOut.transform(
+            localValue < 0.5 ? localValue * 2 : (1 - localValue) * 2,
+          );
         }
 
         return Container(
